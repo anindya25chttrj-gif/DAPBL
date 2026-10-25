@@ -1,2 +1,39 @@
-# DAPBL
-Global Agricultural Crop Yield & Environmental Impact AnalysisA comprehensive exploratory data analysis (EDA), statistical evaluation, and interactive geospatial mapping project examining global agricultural productivity (hg/ha_yield) against environmental factors (rainfall, temperature) and agricultural input intensity (pesticides).   Table of ContentsProject OverviewProblem Statement & ObjectivesDataset StructureMethodology & Pipeline ArchitectureKey Findings & Statistical InsightsVisualizations & Interactive MappingPresentation Deck OutlineRepository StructureProject OverviewAgriculture is highly sensitive to shifting climatic baselines, seasonal weather volatility, and technological resource allocation. This project processes 28,242 historical agricultural records spanning 101 countries and multiple staple crops to extract actionable insights into what drives high crop yields globally.   Problem Statement & ObjectivesThe Challenge: Climate uncertainty and food security pressures require data-driven optimization of agricultural inputs and climate adaptability.Core Questions Addressed:How strongly do environmental factors (annual rainfall and average temperature) constrain or correlate with crop productivity?Does aggregate global rainfall exhibit a linear relationship with total crop yields?How can agricultural stakeholders leverage geospatial mapping to spot regional disparities?Project Goals:Rigorously clean and handle missing/zero anomalies in environmental features.Conduct multi-variable exploratory data analysis (EDA) using scatter plots and correlation heatmaps.Perform statistical hypothesis testing (Pearson correlation analysis between rainfall and yield).Build an interactive global Folium map to visualize country-level yield variations.Dataset Structure (yield_df.csv)Area: Country or geographic region name   Item: Crop species/category (e.g., Maize, Potatoes, Rice, Wheat, Soybeans, Cassava, etc.)   Year: Historical year of record   hg/ha_yield: Crop yield measured in hectograms per hectare   average_rain_fall_mm_per_year: Annual average rainfall (mm)   pesticides_tonnes: Total pesticide volume applied (tonnes)   avg_temp: Average regional temperature (°C)   Methodology & Pipeline ArchitectureData Ingestion & Integrity Checks: Loaded raw data, inspected schema types, and checked for invalid zero or negative values in climate columns.Missing Value Imputation: Imputed missing climate and rainfall entries using country-specific (Area) median transformations, backed by a global median fallback to preserve geographic context.Exploratory Data Analysis (EDA): Designed multi-panel scatter plots to assess non-linear clustering between inputs and yields.Statistical Testing: Computed Pearson correlation coefficients and associated p-values to test linear dependencies between continuous environmental variables and productivity.Geospatial Mapping: Aggregated data at the country level to generate an interactive Folium map featuring proportional circle markers and rich HTML popups.Key Findings & Statistical InsightsClimatic Sweet Spots:Optimal yields heavily concentrate within moderate rainfall bands (500mm to 2,000mm annually) and temperate thermal ranges (10°C to 25°C).Pearson Correlation Analysis (Rainfall vs. Yield):The global Pearson correlation coefficient across all crops combined is $r = 0.0010$ ($p = 0.8716$), indicating no macro-level global linear correlation.takeaway*: Aggregating disparate crops (with vastly different water requirements, e.g., rice paddy vs. sorghum) masks localized trends; crop-specific segmentation is essential for predictive modeling.Agricultural Intensification:Historical tracking highlights steady technological input scaling and increased pesticide usage over decades.Visualizations & Interactive MappingScatter Plots (scatter_plots.png): Multi-variable views displaying yield distributions against rainfall, pesticide tonnage, and temperature.Correlation Heatmap (correlation_heatmap.png): Matrix illustrating interrelationships and linear independence among numeric features.Interactive Map (folium_map.html): Country-level Folium map visualizing global yield disparities with dynamic popups showing average rainfall, temperature, and yield stats.
+# 🌾 Global Agricultural Crop Yield & Environmental Impact Analysis
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-orange)
+![Folium](https://img.shields.io/badge/Folium-Geospatial-green)
+
+A data-driven exploratory analysis investigating how environmental factors and agricultural inputs influence global crop productivity.
+
+---
+
+## 📊 Project At a Glance
+* **Dataset Size**: 28,242 global records[cite: 5]
+* **Geographic Scope**: 101 Countries (`Area`)[cite: 5]
+* **Target Metric**: Crop Yield (`hg/ha_yield` - hectograms per hectare)[cite: 5]
+* **Key Drivers**: Annual Rainfall, Pesticide Usage, Average Temperature[cite: 5]
+
+---
+
+## 🛠️ Key Workflow & Steps
+1. **Data Cleaning & Imputation**: Handled missing climate entries using regional median transformations.
+2. **Exploratory Data Analysis (EDA)**: Visualized multi-variable relationships and correlations.
+3. **Statistical Testing**: Tested linear dependencies using Pearson correlation.
+4. **Geospatial Mapping**: Built an interactive global map displaying country-level yields.
+
+---
+
+## 📈 Visualizations & Outputs
+
+| Feature | File / Description |
+| :--- | :--- |
+| **Scatter Plots** | `scatter_plots.png` — Yield vs. Rainfall, Pesticides & Temperature |
+| **Correlation Heatmap** | `correlation_heatmap.png` — Matrix of feature interdependencies |
+| **Interactive Map** | `folium_map.html` — Global choropleth / marker visualization |
+
+---
+
+## 💡 Key Insights
+* **Climatic Sweet Spots**: Peak productivity concentrates in moderate rainfall bands (500mm–2,000mm/year) and temperatures between 10°C and 25°C.
+* **Global Correlation**: Macro-level Pearson correlation between global rainfall and yield across *all* crops combined is near zero ($r = 0.0010, p = 0.8716$), proving that crop-specific segmentation is essential.
